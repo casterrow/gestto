@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	
+  	<parent>
+        <groupId>com.github.destto</groupId>
+        <artifactId>destto</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>destto-web</artifactId>
+    <packaging>war</packaging>
+  	
+  	<dependencies>
+  		<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<scope>test</scope>
+    	</dependency>
+    	<dependency>  
+		    <groupId>org.mockito</groupId>  
+		    <artifactId>mockito-core</artifactId>  
+		    <scope>test</scope> 
+		</dependency>
+    	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+    	<dependency>
+  			<artifactId>destto-core</artifactId>
+  			<groupId>com.github.destto</groupId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		
+  		
+  		<!-- Jackson API -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
+  	</dependencies>
+  	
+  	<build>
+		<resources>
+	  		<resource>
+	  			<directory>src/main/java</directory>
+	  			<includes>
+	  				<include>**/*.xml</include>
+	  			</includes>
+	  		</resource>
+	  		<resource>
+	  			<directory>src/main/resources</directory>
+	  			<includes>
+	  				<include>**/*.*</include>
+	  			</includes>
+	  		</resource>
+	  	</resources>
+	  	<plugins>
+	  		<!-- 编译插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+			<!-- 打源码包插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- Tomcat8插件 -->
+			<plugin>
+			    <groupId>org.apache.tomcat.maven</groupId>
+			    <artifactId>tomcat7-maven-plugin</artifactId>
+			    <configuration>
+			        <port>8888</port>
+			        <path>/destto-web</path>
+			        <uriEncoding>UTF-8</uriEncoding>
+			        <!-- 监控web.xml文件 -->
+			        <contextFile>${basedir}/src/main/webapp/WEB-INF/web.xml</contextFile>
+			        <useTestClasspath>false</useTestClasspath>
+			    </configuration>
+			</plugin>
+		</plugins>
+	    <finalName>destto-web</finalName>
+	</build>
+</project>
