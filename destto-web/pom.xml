@@ -33,12 +33,9 @@
 			<artifactId>jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-    	<dependency>
-  			<artifactId>destto-core</artifactId>
-  			<groupId>com.github.destto</groupId>
-  			<version>${project.version}</version>
-  		</dependency>
-  		
+  		<groupId>com.github.destto</groupId>
+        <artifactId>destto-core</artifactId>
+        <version>${project.version}</version>
   		
   		<!-- Jackson API -->
 		<dependency>
