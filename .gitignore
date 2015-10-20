@@ -1,5 +1,9 @@
 *.class
 
+target
+build
+.git/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
