@@ -38,11 +38,6 @@
 			<artifactId>jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.github.destto</groupId>
-        	<artifactId>destto-core</artifactId>
-        	<version>${project.version}</version>
-		</dependency>
 
   		<!-- Jackson API -->
 		<dependency>
